@@ -1,12 +1,12 @@
-## Student Name (or name you would preferred to be called)
+## Mike Powell
 
 ### Spring 2023
 
 DSBA student at [Florida Polytechnic University](https://www.floridapoly.edu) currently enrolled in: 
 
-- Course
+- Intro to Data Science
 
-- Course 2
+- Entrepreneurial Opportuniuty Analysis
 
 - Course 3
 
@@ -16,12 +16,12 @@ DSBA student at [Florida Polytechnic University](https://www.floridapoly.edu) cu
 
 I am _passionate about_: 
 
-- Thing 1
+- Craft Beer
 
-- Thing 2
+- My Family
 
 - Thing 3 as shown in this website <https://www.floridapoly.edu>
 
 ***
 
-> Last modified: YYYY/MM/DD
+> Last modified: 2023/01/17
