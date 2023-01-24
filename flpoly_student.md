@@ -8,9 +8,6 @@ DSBA student at [Florida Polytechnic University](https://www.floridapoly.edu) cu
 
 - Entrepreneurial Opportuniuty Analysis
 
-- Course 3
-
-- Course 4
 
 **Hobbies:**
 
