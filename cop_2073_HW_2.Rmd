@@ -37,11 +37,19 @@ Take a screenshot of the GitHub repo you used in HW 01, add the screenshot file 
 
 For this problem, you are asked to create a list of **4 concepts** you have learned about so far this semester. Include the name of the course as a sub-heading (that is, using `##`), and the concepts as an unordered list. Include a link to information about *at least one* of the concepts you listed (for example a link to the Wikipedia page about that concept/topics).
 
-## How to use github
-## How to reallocate my files
-## How to name my files for easier finding in programming
-## rejection is a key to success
-## https://www.elitedaily.com/money/entrepreneurship/key-success-never-giving-rejection/941863
+## Intro to Data Science 
+
+- How to use github
+
+- How to reallocate my files
+
+- How to name my files for easier finding in programming
+
+## Entrepenurial Opportunity Analysis
+
+- rejection is a key to success
+
+## <https://www.elitedaily.com/money/entrepreneurship/key-success-never-giving-rejection/941863>
 
 *Edit this `.Rmd` file to include the solutions here.*
 
