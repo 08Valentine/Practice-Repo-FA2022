@@ -40,8 +40,8 @@ For this problem, you are asked to create a list of **4 concepts** you have lear
 ## How to use github
 ## How to reallocate my files
 ## How to name my files for easier finding in programming
-## 
-
+## rejection is a key to success
+## https://www.elitedaily.com/money/entrepreneurship/key-success-never-giving-rejection/941863
 
 *Edit this `.Rmd` file to include the solutions here.*
 
