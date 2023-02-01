@@ -37,17 +37,17 @@ Take a screenshot of the GitHub repo you used in HW 01, add the screenshot file 
 
 For this problem, you are asked to create a list of **4 concepts** you have learned about so far this semester. Include the name of the course as a sub-heading (that is, using `##`), and the concepts as an unordered list. Include a link to information about *at least one* of the concepts you listed (for example a link to the Wikipedia page about that concept/topics).
 
-## Intro to Data Science 
+## Intro to Data Science
 
-- How to use github
+-   How to use github
 
-- How to reallocate my files
+-   How to reallocate my files
 
-- How to name my files for easier finding in programming
+-   How to name my files for easier finding in programming
 
 ## Entrepenurial Opportunity Analysis
 
-- rejection is a key to success
+-   rejection is a key to success
 
 ## <https://www.elitedaily.com/money/entrepreneurship/key-success-never-giving-rejection/941863>
 
@@ -59,22 +59,87 @@ In this problem you will practice some basic R operations. Include solutions to 
 
 (a) Create a variable called `my_name` that contains *your preferred name*.
 
+```{r}
+my_name <- 'Mike Powell'
+```
+
 (b) Create a variable called `name_length` that holds how many letters are in `my_name`.
+
+```{r}
+name_length <- '11'
+
+nchar("Mike Powell")
+
+```
 
 (c) Show which value is bigger: $e^\pi$ or $\pi^e$. (Use the correct expressions for Euler's constant $e$ and the irrational number $\pi$ in R)
 
+```{r}
+# determin if $e^\pi$ or $\pi^e$ is by true or false statement
+
+pi <- 3.141593
+
+e <- exp(1)
+
+e < pi
+
+exp(pi) < \pi^exp(1)
+
+pi^e <- 22.45917
+
+# determine if statement is true or false
+if 
+
+
+```
+
 (d) Use the colon operator `:` to create a vector `v` of numbers from 31 to 86. Find the length of this vector using the `length()` function.
 
+```{r}
+numbers <- c(31:86)
+length(numbers)
+print(numbers)
+
+```
+
 (e) Use the `seq()` function to produce a range of number from -5 to 10 in 0.5 increments.
+
+```{r}
+
+seq(-5, 10, 0.5)
+
+```
 
 # Problem 4 (25 points)
 
 (a) (10 points) Define a function `imperial_to_metric` that takes in **two arguments**: a number of feet and a number of inches. The function should return the equivalent length in meters
 
+```{r}
+imperial_to_metric <- function(ft, inch){
+  (((ft*12)+inch)*0.0254)
+}
+
+```
+
 > To convert a length `L` from feet (`ft`) and inches (`inches`) to meters (`m`), one can use the relation: `L(m) = L(ft) × 0.3048 + L(inches) × 0.0254`
 
 (b) (5 points) Create a variable `height_in_meters` by passing your height in imperial to the `imperial_to_metric` function.
 
+```{r}
+height_in_meters <- imperial_to_metric(5,9)
+print(height_in_meters)
+```
+
 (c) (5 points) Evaluate `round(3.1415)`, `factorial(12)`, `mean(1:17)`.
 
+```{r}
+round(pi, 3)
+factorial(12)
+mean(1:17)
+```
+
 (d) (5 points) Create an object named `die` that contains the numbers one through six. Simulate a roll of the die with `R`'s `sample()` function.
+
+```{r}
+
+```
