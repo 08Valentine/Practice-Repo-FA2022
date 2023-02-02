@@ -83,12 +83,10 @@ e <- exp(1)
 
 e < pi
 
-exp(pi) < \pi^exp(1)
+exp(pi) < pi^exp(1)
 
-pi^e <- 22.45917
 
 # determine if statement is true or false
-if 
 
 
 ```
