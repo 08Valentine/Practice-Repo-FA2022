@@ -139,5 +139,6 @@ mean(1:17)
 (d) (5 points) Create an object named `die` that contains the numbers one through six. Simulate a roll of the die with `R`'s `sample()` function.
 
 ```{r}
-
+die <- (1:6)
+sample(die)
 ```
