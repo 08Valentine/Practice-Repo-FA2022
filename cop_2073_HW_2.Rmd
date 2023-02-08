@@ -140,5 +140,6 @@ mean(1:17)
 
 ```{r}
 die <- (1:6)
-sample(die)
+sample(die,1)
+ sample(die)
 ```
