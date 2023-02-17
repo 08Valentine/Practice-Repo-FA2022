@@ -198,7 +198,7 @@ against_bulls <- c(20, 99, 2, 1)
 ```{r}
 # Solution for 4C:
 
-games 
+games <- data.frame(bulls_points, against_bulls)
 
 
 ```
@@ -208,6 +208,7 @@ games
 ```{r}
 # Solution for 4D:
 
+games[["diff"]] <- games$bulls_points - games$against_bulls
 
 ```
 
@@ -216,6 +217,7 @@ games
 ```{r}
 # Solution for 4E:
 
+games$won <- games$bulls_points > games$against_bulls
 
 ```
 
@@ -224,5 +226,10 @@ games
 ```{r}
 # Solution for 4F:
 
+opponents <- c("Miami Heat", "La Clippers", "Boston Celtics", "OKC Thunder")
+
+games$opponents <- opponents
+
+head(games)
 
 ```
