@@ -9,10 +9,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="First Name Last name - flastname@floridapoly.edu" />
 
 
-<title>Introduction to Data Science - HW 3</title>
+<title>Working with Data Frames</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1747,416 +1746,291 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Introduction to Data Science - HW 3</h1>
-<h4 class="author">First Name Last name -
-<code>flastname@floridapoly.edu</code></h4>
+<h1 class="title toc-ignore">Working with Data Frames</h1>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<div id="problem-1-20-points" class="section level1">
-<h1>Problem 1 (20 Points)</h1>
-<p>Create the following vectors in <code>R</code> (see the pattern and
-use appropriate functions to construct these vectors):</p>
-<p><span class="math inline">\(a = (5, 10, 15, 20, ...,
-160)\)</span></p>
-<p><span class="math inline">\(b = (87, 86, 85, ..., 56)\)</span></p>
-<ol style="list-style-type: lower-alpha">
-<li>(5 points) Multiply these vectors and call the result
-<code>d</code>.</li>
-</ol>
+<div id="exercise-1-creating-data-frames" class="section level1">
+<h1>Exercise 1: creating data frames</h1>
+<p>Create a vector of the number of points the Orlando Magic scored in
+the last 4 January games of the season (Google “Orlando Magic” for the
+scores!)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgMUE6XG5hIDwtIHNlcSg1LCAxNjAsIDUpXG5cbmIgPC0gc2VxKDg3LCA1NiwgLTEpXG5cbmQgPC0gYSpiXG5cbnByaW50KGQpXG5gYGAifQ== -->
-<pre class="r"><code># Solution for 1A:
-a &lt;- seq(5, 160, 5)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBleGFtcGxlIGZyb20gMjAxOSAtIDIwIHNlYXNvblxuXG5wb2ludHMgPC0gYyg5MiwgOTcsIDk4LCAxMTQpXG5cbmBgYCJ9 -->
+<pre class="r"><code># example from 2019 - 20 season
 
-b &lt;- seq(87, 56, -1)
-
-d &lt;- a*b
-
-print(d)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAgNDM1ICA4NjAgMTI3NSAxNjgwIDIwNzUgMjQ2MCAyODM1IDMyMDAgMzU1NSAzOTAwIDQyMzVcblsxMl0gNDU2MCA0ODc1IDUxODAgNTQ3NSA1NzYwIDYwMzUgNjMwMCA2NTU1IDY4MDAgNzAzNSA3MjYwXG5bMjNdIDc0NzUgNzY4MCA3ODc1IDgwNjAgODIzNSA4NDAwIDg1NTUgODcwMCA4ODM1IDg5NjBcbiJ9 -->
-<pre><code> [1]  435  860 1275 1680 2075 2460 2835 3200 3555 3900 4235
-[12] 4560 4875 5180 5475 5760 6035 6300 6555 6800 7035 7260
-[23] 7475 7680 7875 8060 8235 8400 8555 8700 8835 8960</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: lower-alpha">
-<li>(5 points) What are the 19th, 20th, and 21st elements of
-<code>d</code>?</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgMUI6XG4oZClbYygxOSwgMjAsIDIxKV1cbmBgYCJ9 -->
-<pre class="r"><code># Solution for 1B:
-(d)[c(19, 20, 21)]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDY1NTUgNjgwMCA3MDM1XG4ifQ== -->
-<pre><code>[1] 6555 6800 7035</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: lower-alpha">
-<li>(5 points) What are all of the elements of <code>d</code> which are
-less than 2000?</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgMUM6XG5cbmRbZCA8IDIwMDBdXG5gYGAifQ== -->
-<pre class="r"><code># Solution for 1C:
-
-d[d &lt; 2000]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdICA0MzUgIDg2MCAxMjc1IDE2ODBcbiJ9 -->
-<pre><code>[1]  435  860 1275 1680</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2hvdyB0byByZXBsYWNlIGxvZ2ljYWwgYXJndW1lbnRzIHdpdGggbnVtYmVycz9cblxuI3VzZSBib29sZWFuIG9yIHNvbWV0aGluZyBlbHNlPyBIb3cgdG8gcHJpbnQgZCA8IDIwMDA/XG5cblxuYGBgIn0= -->
-<pre class="r"><code>#how to replace logical arguments with numbers?
-
-#use boolean or something else? How to print d &lt; 2000?
+points &lt;- c(92, 97, 98, 114)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="4" style="list-style-type: lower-alpha">
-<li>(5 points) How many elements of <code>d</code> are greater than
-6000?</li>
-</ol>
+<p>Create a vector of the number of points the Orlando Magic have
+allowed to be scored against them in each of the last 4 January games of
+the season</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgMUQ6XG4jZCBpcyB0aGUgdmVjdG9yIHRoZSBbIF0gaXMgYSBwbGFjZSBpbiB0aGUgdmVjdG9yIFxuXG5kW2QgPiA2MDAwXVxuYGBgIn0= -->
-<pre class="r"><code># Solution for 1D:
-#d is the vector the [ ] is a place in the vector 
-
-d[d &gt; 6000]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSA2MDM1IDYzMDAgNjU1NSA2ODAwIDcwMzUgNzI2MCA3NDc1IDc2ODAgNzg3NSA4MDYwIDgyMzVcblsxMl0gODQwMCA4NTU1IDg3MDAgODgzNSA4OTYwXG4ifQ== -->
-<pre><code> [1] 6035 6300 6555 6800 7035 7260 7475 7680 7875 8060 8235
-[12] 8400 8555 8700 8835 8960</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBiaWdfbnVtIDwtIGQgPiA2MDAwXG4jbGVuZ3RoKGJpZ19udW0pXG5cblxuYGBgIn0= -->
-<pre class="r"><code># big_num &lt;- d &gt; 6000
-#length(big_num)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5wb2ludHNfYWxsb3dlZCA8LSBjKDExMywgMTEyLCAxMDksIDEyMClcblxuYGBgIn0= -->
+<pre class="r"><code>
+points_allowed &lt;- c(113, 112, 109, 120)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-</div>
-<div id="problem-2-20-points" class="section level1">
-<h1>Problem 2 (20 Points)</h1>
-<p>Start with this vector of <code>nouns</code>.</p>
+<p>Combine your two vectors into a data frame called
+<code>games</code></p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubm91bnMgPC0gYyhcImFwcGxlXCIsIFwiZmxvd2VyXCIsIFwiaW5zZWN0XCIsIFwibGV0dHVjZVwiLCBcImtuaWZlXCIsIFwiZG9nXCIsIFwiY2xvdWRcIiwgXCJwZXJzb25cIiwgXCJjYWJpbmV0XCIsIFwiZmxvd2VyXCIgKVxuYGBgIn0= -->
-<pre class="r"><code>nouns &lt;- c(&quot;apple&quot;, &quot;flower&quot;, &quot;insect&quot;, &quot;lettuce&quot;, &quot;knife&quot;, &quot;dog&quot;, &quot;cloud&quot;, &quot;person&quot;, &quot;cabinet&quot;, &quot;flower&quot; )</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol style="list-style-type: lower-alpha">
-<li>(5 points) Use the <code>length()</code> function to display the
-number of elements in <code>nouns</code>.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgMkE6XG5cblxubGVuZ3RoKG5vdW5zKVxuYGBgIn0= -->
-<pre class="r"><code># Solution for 2A:
-
-
-length(nouns)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEwXG4ifQ== -->
-<pre><code>[1] 10</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: lower-alpha">
-<li>(5 points) Use indexing to create a new vector consisting of the
-first 4 elements of <code>nouns</code>.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgMkI6XG5cbm5vdW5zIFsxOjRdXG5gYGAifQ== -->
-<pre class="r"><code># Solution for 2B:
-
-nouns [1:4]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYXBwbGVcIiAgIFwiZmxvd2VyXCIgIFwiaW5zZWN0XCIgIFwibGV0dHVjZVwiXG4ifQ== -->
-<pre><code>[1] &quot;apple&quot;   &quot;flower&quot;  &quot;insect&quot;  &quot;lettuce&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: lower-alpha">
-<li>(5 points) Use indexing to create a new vector consisting of only
-the last 8 elements of <code>nouns</code>.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgMkM6XG5ub3Vuc1szOjEwXVxuYGBgIn0= -->
-<pre class="r"><code># Solution for 2C:
-nouns[3:10]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiaW5zZWN0XCIgIFwibGV0dHVjZVwiIFwia25pZmVcIiAgIFwiZG9nXCIgICAgIFwiY2xvdWRcIiAgIFwicGVyc29uXCIgXG5bN10gXCJjYWJpbmV0XCIgXCJmbG93ZXJcIiBcbiJ9 -->
-<pre><code>[1] &quot;insect&quot;  &quot;lettuce&quot; &quot;knife&quot;   &quot;dog&quot;     &quot;cloud&quot;   &quot;person&quot; 
-[7] &quot;cabinet&quot; &quot;flower&quot; </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="4" style="list-style-type: lower-alpha">
-<li>(5 points) Use indexing to create a new vector of the 1st, 3rd
-through 6th, and 10th elements of <code>nouns</code> (the length of the
-resulting vector should be 6).</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgMkQ6XG5cbmxlbmd0aChub3Vuc1tjKDEsIDM6NiwgMTApXSlcbmBgYCJ9 -->
-<pre class="r"><code># Solution for 2D:
-
-length(nouns[c(1, 3:6, 10)])</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDZcbiJ9 -->
-<pre><code>[1] 6</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="problem-3-30-points" class="section level1">
-<h1>Problem 3 (30 Points)</h1>
-<ol style="list-style-type: lower-alpha">
-<li>(5 points) Create a vector <code>my_breakfast</code> of everything
-you ate for breakfast.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgM0E6XG5cbm15X2JyZWFrZmFzdCA8LSBjKFwicGFuY2FrZXNcIiwgXCJjb2ZmZWVcIilcblxuXG5gYGAifQ== -->
-<pre class="r"><code># Solution for 3A:
-
-my_breakfast &lt;- c(&quot;pancakes&quot;, &quot;coffee&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBodyBwcm9ibGVtXG5nYW1lcyA8LSBkYXRhLmZyYW1lKHBvaW50cywgcG9pbnRzX2FsbG93ZWQpXG5cbmBgYCJ9 -->
+<pre class="r"><code># hw problem
+games &lt;- data.frame(points, points_allowed)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: lower-alpha">
-<li>(5 points) Create a vector <code>my_lunch</code> of everything you
-ate (or will eat) for lunch.</li>
-</ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgM0I6XG5cbm15X2x1bmNoIDwtIGMoXCJzYW5kd2hpY2hcIiwgXCJyZWRidWxsXCIpXG5cblxuYGBgIn0= -->
-<pre class="r"><code># Solution for 3B:
-
-my_lunch &lt;- c(&quot;sandwhich&quot;, &quot;redbull&quot;)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: lower-alpha">
-<li>(5 points) Create a list <code>meals</code> that contains your
-breakfast and lunch.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgM0M6XG5cbm1lYWxzIDwtIGxpc3QobXlfYnJlYWtmYXN0ID0gbXlfYnJlYWtmYXN0LCBteV9sdW5jaCA9IG15X2x1bmNoKVxubWVhbHNcbmBgYCJ9 -->
-<pre class="r"><code># Solution for 3C:
-
-meals &lt;- list(my_breakfast = my_breakfast, my_lunch = my_lunch)
-meals</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJG15X2JyZWFrZmFzdFxuWzFdIFwicGFuY2FrZXNcIiBcImNvZmZlZVwiICBcblxuJG15X2x1bmNoXG5bMV0gXCJzYW5kd2hpY2hcIiBcInJlZGJ1bGxcIiAgXG4ifQ== -->
-<pre><code>$my_breakfast
-[1] &quot;pancakes&quot; &quot;coffee&quot;  
-
-$my_lunch
-[1] &quot;sandwhich&quot; &quot;redbull&quot;  </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="4" style="list-style-type: lower-alpha">
-<li>(5 points) Add a “dinner” element to your <code>meals</code> list
-that has what you plan to eat for dinner.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgM0Q6XG5cbm1lYWxzJGRpbm5lciA8LSBjKFwiY2hpY2tlblwiKVxubWVhbHNcbmBgYCJ9 -->
-<pre class="r"><code># Solution for 3D:
-
-meals$dinner &lt;- c(&quot;chicken&quot;)
-meals</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJG15X2JyZWFrZmFzdFxuWzFdIFwicGFuY2FrZXNcIiBcImNvZmZlZVwiICBcblxuJG15X2x1bmNoXG5bMV0gXCJzYW5kd2hpY2hcIiBcInJlZGJ1bGxcIiAgXG5cbiRkaW5uZXJcblsxXSBcImNoaWNrZW5cIlxuIn0= -->
-<pre><code>$my_breakfast
-[1] &quot;pancakes&quot; &quot;coffee&quot;  
-
-$my_lunch
-[1] &quot;sandwhich&quot; &quot;redbull&quot;  
-
-$dinner
-[1] &quot;chicken&quot;</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="5" style="list-style-type: lower-alpha">
-<li>(5 points) Use dollar notation to extract your <code>dinner</code>
-element from your list and save it in a vector called ‘dinner’.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgM0U6XG5cbiNbXSBmb3IgdmVjdG9yLCAkIGZvciBsaXN0XG5cbmRpbm5uZXIgPC0gbWVhbHMkZGlubmVyXG5cblxuYGBgIn0= -->
-<pre class="r"><code># Solution for 3E:
-
-#[] for vector, $ for list
-
-dinnner &lt;- meals$dinner
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="6" style="list-style-type: lower-alpha">
-<li>(5 points) Use double-bracket notation to extract your
-<code>lunch</code> element from your list and save it in your list as
-the element at index 5 (no reason beyond practice).</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgM0Y6XG5cbm1lYWxzW1tcIm15X2x1bmNoXCJdXVxuYGBgIn0= -->
-<pre class="r"><code># Solution for 3F:
-
-meals[[&quot;my_lunch&quot;]]</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwic2FuZHdoaWNoXCIgXCJyZWRidWxsXCIgIFxuIn0= -->
-<pre><code>[1] &quot;sandwhich&quot; &quot;redbull&quot;  </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVhbHNbWzVdXSA8LSBtZWFsc1tbXCJteV9sdW5jaFwiXV1cblxubWVhbHNcbmBgYCJ9 -->
-<pre class="r"><code>meals[[5]] &lt;- meals[[&quot;my_lunch&quot;]]
-
-meals</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiJG15X2JyZWFrZmFzdFxuWzFdIFwicGFuY2FrZXNcIiBcImNvZmZlZVwiICBcblxuJG15X2x1bmNoXG5bMV0gXCJzYW5kd2hpY2hcIiBcInJlZGJ1bGxcIiAgXG5cbiRkaW5uZXJcblsxXSBcImNoaWNrZW5cIlxuXG5bWzRdXVxuTlVMTFxuXG5bWzVdXVxuWzFdIFwic2FuZHdoaWNoXCIgXCJyZWRidWxsXCIgIFxuIn0= -->
-<pre><code>$my_breakfast
-[1] &quot;pancakes&quot; &quot;coffee&quot;  
-
-$my_lunch
-[1] &quot;sandwhich&quot; &quot;redbull&quot;  
-
-$dinner
-[1] &quot;chicken&quot;
-
-[[4]]
-NULL
-
-[[5]]
-[1] &quot;sandwhich&quot; &quot;redbull&quot;  </code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="problem-4-30-points" class="section level1">
-<h1>Problem 4 (30 Points)</h1>
-<ol style="list-style-type: lower-alpha">
-<li>(5 points) Create a vector of the number of points the Chicago Bulls
-(NBA team) scored in the most recent 4 games of the season (Google
-“Chicago Bulls” for the scores!)</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgNEE6XG5cbmJ1bGxzX3BvaW50cyA8LSBjKDM4OSwgMjAwLCA1MCwgMTApXG5cbmBgYCJ9 -->
-<pre class="r"><code># Solution for 4A:
-
-bulls_points &lt;- c(389, 200, 50, 10)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="2" style="list-style-type: lower-alpha">
-<li>(5 points) Create a vector of the number of points the Bulls have
-allowed to be scored against them in each of the first 4 games of the
-season.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgNEI6XG5cbmFnYWluc3RfYnVsbHMgPC0gYygyMCwgOTksIDIsIDEpXG5cblxuYGBgIn0= -->
-<pre class="r"><code># Solution for 4B:
-
-against_bulls &lt;- c(20, 99, 2, 1)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="3" style="list-style-type: lower-alpha">
-<li>(5 points) Combine your two vectors into a dataframe called
-<code>games</code>.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgNEM6XG5cbmdhbWVzIDwtIGRhdGEuZnJhbWUoYnVsbHNfcG9pbnRzLCBhZ2FpbnN0X2J1bGxzKVxuXG5cbmBgYCJ9 -->
-<pre class="r"><code># Solution for 4C:
-
-games &lt;- data.frame(bulls_points, against_bulls)
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="4" style="list-style-type: lower-alpha">
-<li>(5 points) Create a new column “diff” that is the difference in
-points between the teams. Hint: recall the syntax for assigning new
-elements (which in this case will be a vector) to a list!</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgNEQ6XG5cbmdhbWVzW1tcImRpZmZcIl1dIDwtIGdhbWVzJGJ1bGxzX3BvaW50cyAtIGdhbWVzJGFnYWluc3RfYnVsbHNcblxuYGBgIn0= -->
-<pre class="r"><code># Solution for 4D:
-
-games[[&quot;diff&quot;]] &lt;- games$bulls_points - games$against_bulls
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="5" style="list-style-type: lower-alpha">
-<li>(5 points) Create a new column “won” which is <code>TRUE</code> if
-the Bulls won the game.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgNEU6XG5cbmdhbWVzJHdvbiA8LSBnYW1lcyRidWxsc19wb2ludHMgPiBnYW1lcyRhZ2FpbnN0X2J1bGxzXG5cbmBgYCJ9 -->
-<pre class="r"><code># Solution for 4E:
-
-games$won &lt;- games$bulls_points &gt; games$against_bulls
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<ol start="6" style="list-style-type: lower-alpha">
-<li>(5 points) Create a vector of the opponent names corresponding to
-the games played and add it to your dataframe.</li>
-</ol>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBTb2x1dGlvbiBmb3IgNEY6XG5cbm9wcG9uZW50cyA8LSBjKFwiTWlhbWkgSGVhdFwiLCBcIkxhIENsaXBwZXJzXCIsIFwiQm9zdG9uIENlbHRpY3NcIiwgXCJPS0MgVGh1bmRlclwiKVxuXG5nYW1lcyRvcHBvbmVudHMgPC0gb3Bwb25lbnRzXG5cbmhlYWQoZ2FtZXMpXG5gYGAifQ== -->
-<pre class="r"><code># Solution for 4F:
-
-opponents &lt;- c(&quot;Miami Heat&quot;, &quot;La Clippers&quot;, &quot;Boston Celtics&quot;, &quot;OKC Thunder&quot;)
-
-games$opponents &lt;- opponents
-
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jaGVhZCBsZXRzIHlvdSBzZWUgeW91ciBkYXRhXG5oZWFkKGdhbWVzKVxuYGBgIn0= -->
+<pre class="r"><code>
+#head lets you see your data
 head(games)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NCwibmNvbCI6NSwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbNCDDlyA1XSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUJsMVJVVXZETUJET3VsUlo1OGJBUDFERTEvVkJSWHh6T0pHSmlpSVQ1dFBJMm5RR3N5UTBLZHVqUDgyZjVDK1lYcHRFdGhhT3UzejNYZSs3dTlmYjJYazBpeEJDYllTREFMVkRDRkg0TnIwYlhpRkE0TkZDR0hVcXZ3SFNjWlVGNjRQaDBlYWxZcU1SUTliZk8zK0svR2Q1Rnc2ZmZWdnZrdGMvRGQ1NllQUHZsakdhdUxxVGYxNmxGTmVpOW0xUTQxWm85TVRJaXNVVFNveER1bzhrSG5PbUZDMjBnL28zVWhzcDRqSGxocVVlN1Q0L2pPUHBSeWt5V2pUR0R3VlpVZTFhaFE0OFdwU2M2N21TVEJqL2p4NVpFaWEwbWRjNUIrS001Ym1MMjJzcFhOaVJTa2xCcStMOWJwMUNyaFBmc1FjV2ZOa0Y0S2FzbEJQdFpYa3d5b2doU1Y1QVBieTJqWkpEcVF5VEFvb0NmODdkNGxiUkFBYWxxSlJrd3hRVzh6azh1M1IzOEx2dk9ZOTM0dEQyREg0YkN6dWdZc2tFOWVJNVdWRHVMd0lqMXhNbnFvQjErbEVBMVltUmhuaGVsRXJ1a1hvNHRQMEQ4VzVza01ZQ0FBQT0ifQ== -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NCwibmNvbCI6Miwic3VtbWFyeSI6W119LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRVFUvRE1BejFzZ1MwU3BzbThUdmFBMXpnMWdQaUJ5QVFsYWlZUWh1Z0lpUlZtMmtjK2VVRDU4TUlFc215L2ZMc1ovdjJ1cmtvbWdJQWxzQVpnNlhBRU1UOTNVMTVDWWhnc2dBT0srOC9rWFNHZ1FjM2FMeCtnUERxcGs3K0svbzIrbDllbS83YnhIOU0rUlBSL2drSkl6L1VqTUUyaUVYd1pMU0RjWFBLTmpIYlNhM3RRZlZaZzlWa0R4VTFXZnNtYVI2ZUszVmF6cVJFWU5GTEo2dVhDZXN4TzJZbHAzWjBnelZZeFB3dFJGYThtREpndXpkK2tyN3MzdmJtdlR5LzhncmhQOW82ZWY0blpsR1RmYWRlZ202Z3pPdGdGQTJ2NWJQU2RCQmNPV3hjalJOZWhsWkJkSzZjZFpKNFJXYzFJV0U1T1A0QUxxMWk4UU1DQUFBPSJ9 -->
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["bulls_points"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["against_bulls"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["diff"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["won"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["opponents"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"389","2":"20","3":"369","4":"TRUE","5":"Miami Heat","_rn_":"1"},{"1":"200","2":"99","3":"101","4":"TRUE","5":"La Clippers","_rn_":"2"},{"1":"50","2":"2","3":"48","4":"TRUE","5":"Boston Celtics","_rn_":"3"},{"1":"10","2":"1","3":"9","4":"TRUE","5":"OKC Thunder","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10],"total":[5]},"rows":{"min":[10],"max":[10],"total":[4]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["points"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["points_allowed"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"92","2":"113","_rn_":"1"},{"1":"97","2":"112","_rn_":"2"},{"1":"98","2":"109","_rn_":"3"},{"1":"114","2":"120","_rn_":"4"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[4]},"pages":{}}}
   </script>
 </div>
 <!-- rnb-frame-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTkFcbmBgYCJ9 -->
-<pre class="r"><code>NA</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGltKGdhbWVzKVxuYGBgIn0= -->
+<pre class="r"><code>dim(games)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQgMlxuIn0= -->
+<pre><code>[1] 4 2</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2FtZXMkcG9pbnRzXG5gYGAifQ== -->
+<pre class="r"><code>games$points</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdICA5MiAgOTcgIDk4IDExNFxuIn0= -->
+<pre><code>[1]  92  97  98 114</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Create a new column <code>gap</code> that is the difference in points
+between the teams (recall the syntax for assigning new elements (which
+in this case will be a vector) to a list!</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5nYW1lc1tbXCJnYXBcIl1dIDwtIGdhbWVzJHBvaW50cyAtIGdhbWVzJHBvaW50c19hbGxvd2VkXG5cbmBgYCJ9 -->
+<pre class="r"><code>
+games[[&quot;gap&quot;]] &lt;- games$points - games$points_allowed
+</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Create a new column “won” which is TRUE if the Orlando Magic won the
+game</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2FtZXMkd29uIDwtIGdhbWVzJHBvaW50cyA+IGdhbWVzJHBvaW50c19hbGxvd2VkXG5gYGAifQ== -->
+<pre class="r"><code>games$won &lt;- games$points &gt; games$points_allowed</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Check the current data frame <code>games</code></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2FtZXNcbmBgYCJ9 -->
+<pre class="r"><code>games</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NCwibmNvbCI6NCwic3VtbWFyeSI6W119LCJyZGYiOiJINHNJQUFBQUFBQUFCbDFRd1VyRU1CQ2RwdTNLQm5aWjhMSmY0SzA1dUFnZWV4QS9RQlFMRmlXMmRTM0dwTFJkNnRGUDJ5OWJuVGFUaFNZUTNwdVhOek9aZWJqTGRqempBQkJDeEJpRU1WS0lueDd2azF0QUJZTUFJbGlPK0lPbVN5UVIzdldJNlROTUo4MVN3bCtMdWNXekw2ZjNuUHd2RkwvQ3pIZThzY0ZSRUY0UmJzOCtUdjI5TS90b3JPVjMxU0haVEdZckxocFQ2NzZqYUcyak42bVVHYXFTMUhBdkcwY0hvNzJ5eTlZTXdwVmU0V1UwWmVUM0w1VHNYSDhuOGxMMlVueTBtSS9SeVV1NU1FMWZHNDFKYk54dzdDVUhyU2RzRG5yOFNaa1Vud2Y5bGV5dWFUVUI3V05GUEpyenNTZjdvMXF4MjB5bDk3V3UzT2VWZksrVVd4T09QRTBzbWhiMzVVWkJ0Uk85NmFYejhjSW9wMHpEd2VrZjJ0K3ZOVmtDQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["points"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["points_allowed"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["gap"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["won"],"name":[4],"type":["lgl"],"align":["right"]}],"data":[{"1":"92","2":"113","3":"-21","4":"FALSE"},{"1":"97","2":"112","3":"-15","4":"FALSE"},{"1":"98","2":"109","3":"-11","4":"FALSE"},{"1":"114","2":"120","3":"-6","4":"FALSE"}],"options":{"columns":{"min":{},"max":[10],"total":[4]},"rows":{"min":[10],"max":[10],"total":[4]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Create a vector of the opponent names corresponding to the games
+above</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3Bwb25lbnRzIDwtIGMoXCJNaWFtaSBIZWF0XCIsIFwiTGEgQ2xpcHBlcnNcIiwgXCJCb3N0b24gQ2VsdGljc1wiLCBcIk9LQyBUaHVuZGVyXCIpXG5gYGAifQ== -->
+<pre class="r"><code>opponents &lt;- c(&quot;Miami Heat&quot;, &quot;La Clippers&quot;, &quot;Boston Celtics&quot;, &quot;OKC Thunder&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Add a column to the <code>games</code> data frame with the names of
+the opponents</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2FtZXMkb3Bwb25lbnRzIDwtIG9wcG9uZW50c1xuXG5gYGAifQ== -->
+<pre class="r"><code>games$opponents &lt;- opponents
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Check the final version of the data frame</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2FtZXNcbmBgYCJ9 -->
+<pre class="r"><code>games</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NCwibmNvbCI6NSwic3VtbWFyeSI6W119LCJyZGYiOiJINHNJQUFBQUFBQUFCbVZSVFVzRE1SQ2Q3b2ZTTGEyQ0Y0OTc4dGE5Rk1GanNTS0NpaUFWQ3k1SzNJMDFtQ1poTjZVZS9XbjlaZFhaM1VscDE4QXdNeTl2TWpNdmoxZXpVVFNMQU1DSHdQUEFEekdFOEdsNlBid0FSRERwUUFEZHluOGo2YVM2UlJ1Z0JlTm5xTTk0TmliLzAvaTA4VnRlU3ZjcDhWOG9mNFU5M3ZxOFNkWUorVFB5cDF0ZU5Xa0EvODl4alRlRFJ2ZUNMVVI4dzVrbHBIZkg0b2tVeHZDaUpHaHdxVXVyVlR6aDBvck1vYjJIMjBrOC9WeXFuQmV0OVVQRkZyeWtWaUdCQjBZTFpiZHZOdGtiazFLdmVFNm9QMmZHaFN1dEtPeHFZN1RpVmZGK24yNmhWNG5yMVVmelNNeWdQVkFtV2VrR2NtQ1VNOHVTandMck1kdTBTZzYxc1VJckxQTGNSKzRXZDRvV2NMUlUxU1Q1TUVOSnZvWWorb0FPaWQ2bk9OaUp3NmFsOTl0V2lxdTVVTnpOTHRrN2wwNDIzTGhlT0RFRjZ1YzJRYlJNckxiTThhSk1TNGZVdThIbUQ5SXZpWW0vQWdBQSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["points"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["points_allowed"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["gap"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["won"],"name":[4],"type":["lgl"],"align":["right"]},{"label":["opponents"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"92","2":"113","3":"-21","4":"FALSE","5":"Miami Heat"},{"1":"97","2":"112","3":"-15","4":"FALSE","5":"La Clippers"},{"1":"98","2":"109","3":"-11","4":"FALSE","5":"Boston Celtics"},{"1":"114","2":"120","3":"-6","4":"FALSE","5":"OKC Thunder"}],"options":{"columns":{"min":{},"max":[10],"total":[5]},"rows":{"min":[10],"max":[10],"total":[4]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="working-with-built-in-data-sets" class="section level1">
+<h1>Working with built-in data sets</h1>
+<p>Load R’s <code>USPersonalExpenditure</code> dataset using the
+<code>data()</code> function.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YSgnVVNQZXJzb25hbEV4cGVuZGl0dXJlJylcbmBgYCJ9 -->
+<pre class="r"><code>data(&#39;USPersonalExpenditure&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuVVNQZXJzb25hbEV4cGVuZGl0dXJlXG5gYGAifQ== -->
+<pre class="r"><code>USPersonalExpenditure</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgICAgICAgICAgICAgICAgIDE5NDAgICAxOTQ1ICAxOTUwIDE5NTUgIDE5NjBcbkZvb2QgYW5kIFRvYmFjY28gICAgMjIuMjAwIDQ0LjUwMCA1OS42MCA3My4yIDg2LjgwXG5Ib3VzZWhvbGQgT3BlcmF0aW9uIDEwLjUwMCAxNS41MDAgMjkuMDAgMzYuNSA0Ni4yMFxuTWVkaWNhbCBhbmQgSGVhbHRoICAgMy41MzAgIDUuNzYwICA5LjcxIDE0LjAgMjEuMTBcblBlcnNvbmFsIENhcmUgICAgICAgIDEuMDQwICAxLjk4MCAgMi40NSAgMy40ICA1LjQwXG5Qcml2YXRlIEVkdWNhdGlvbiAgICAwLjM0MSAgMC45NzQgIDEuODAgIDIuNiAgMy42NFxuIn0= -->
+<pre><code>                      1940   1945  1950 1955  1960
+Food and Tobacco    22.200 44.500 59.60 73.2 86.80
+Household Operation 10.500 15.500 29.00 36.5 46.20
+Medical and Health   3.530  5.760  9.71 14.0 21.10
+Personal Care        1.040  1.980  2.45  3.4  5.40
+Private Education    0.341  0.974  1.80  2.6  3.64</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaXMuZGF0YS5mcmFtZShVU1BlcnNvbmFsRXhwZW5kaXR1cmUpXG5gYGAifQ== -->
+<pre class="r"><code>is.data.frame(USPersonalExpenditure)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIEZBTFNFXG4ifQ== -->
+<pre><code>[1] FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2xhc3MoVVNQZXJzb25hbEV4cGVuZGl0dXJlKVxuYGBgIn0= -->
+<pre class="r"><code>class(USPersonalExpenditure)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwibWF0cml4XCIgXCJhcnJheVwiIFxuIn0= -->
+<pre><code>[1] &quot;matrix&quot; &quot;array&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Check the object using the <code>head()</code> function</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Is the object <code>USPersonalExpenditure</code> a data frame? Use
+<code>is.data.frame()</code> to check</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Create a new object called <code>us_exp</code> that is a data frame
+version of the <code>USPersonalExpenditure</code> object</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG51c19leHAgPC0gYXMuZGF0YS5mcmFtZShVU1BlcnNvbmFsRXhwZW5kaXR1cmUpXG5cbmBgYCJ9 -->
+<pre class="r"><code>
+us_exp &lt;- as.data.frame(USPersonalExpenditure)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Do we have a data frame now?</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaXMuZGF0YS5mcmFtZSh1c19leHApXG5gYGAifQ== -->
+<pre class="r"><code>is.data.frame(us_exp)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFRSVUVcbiJ9 -->
+<pre><code>[1] TRUE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>What are the column names?</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sbmFtZXModXNfZXhwKVxuYGBgIn0= -->
+<pre class="r"><code>colnames(us_exp)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiMTk0MFwiIFwiMTk0NVwiIFwiMTk1MFwiIFwiMTk1NVwiIFwiMTk2MFwiXG4ifQ== -->
+<pre><code>[1] &quot;1940&quot; &quot;1945&quot; &quot;1950&quot; &quot;1955&quot; &quot;1960&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Notice anything? Are there “row names” for <code>us_exp</code>?</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucm93bmFtZXModXNfZXhwKVxuYGBgIn0= -->
+<pre class="r"><code>rownames(us_exp)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiRm9vZCBhbmQgVG9iYWNjb1wiICAgIFwiSG91c2Vob2xkIE9wZXJhdGlvblwiIFwiTWVkaWNhbCBhbmQgSGVhbHRoXCIgXG5bNF0gXCJQZXJzb25hbCBDYXJlXCIgICAgICAgXCJQcml2YXRlIEVkdWNhdGlvblwiICBcbiJ9 -->
+<pre><code>[1] &quot;Food and Tobacco&quot;    &quot;Household Operation&quot; &quot;Medical and Health&quot; 
+[4] &quot;Personal Care&quot;       &quot;Private Education&quot;  </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Add a column <code>category</code> to your data frame that contains
+the row names</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG51c19leHAkY2F0YWdvcnkgPC0gcm93Lm5hbWVzKHVzX2V4cClcbnVzX2V4cFxuYGBgIn0= -->
+<pre class="r"><code>
+us_exp$catagory &lt;- row.names(us_exp)
+us_exp</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NSwibmNvbCI6Niwic3VtbWFyeSI6W119LCJyZGYiOiJINHNJQUFBQUFBQUFCZ3R5aVREbWl1QmlZR0JnWm1CaFltSmdaZ1V5R1ZoRFE5eDBMUmlBSWtBT0l3TUxBeWVJcmdBcUVnWXkySUNZRDZUS3djd1lEQnhVR2NEQWdjZTJZUEYxTGx2N0R5Q3lZSW45MVVzZlYvNStuZ3RYNytZQVVhY1BWUy9PQmRaZy8zK2RTTlZEOTNYMjc3V1plRHgzeGNIVis1NEJnYk1PdGxEMXl0bXRjanNDM3pnd3p3U0JXZlovSVBKdzlVRStFUFZPVUh0MG9QcTRvZTVrUVZNZnVoa2k3aTRKTnMvQkZFcUxRc3gzNEFYYTlycFZIcWhXQUtRZUdoQUNidm41S1FxSmVTa0tJZmxKaWNuSitWQnhZWS84MHVMVWpQeWNGQVgvZ3RTaXhKTE0vRHlvbEpCdmFrcG1jbUlPV0pkSGFtSk9TUVpVaGpjZ3RhZzRQdzhvNVp4WWxBb1ZGQXdveWl4TExFbFZjRTBwVFlhWWd4b1hySG1KdWFuRlVIZXhRUVZaREMxTkRKRFlwZ2kyS1pLNEtaSzRHVXljQTJoTllucCtVU1dhUlp4RitlVjZ5SllOcGtCSXpra3NocmtMSnNpVkF2U0lYbG9SME1sQTNqODBMZXo1QlNDRGdKcVloTUdlUWRYTVdJUW1JRkNhQi9KOGltNXlSbWxldHE2aEVjZ0dzRHdFODBKcFZpUTJHOFJPcHY5b0ljYVdtcGVlbVFmekhXdE9ZbEpxRHBUREJ3eGxjQ0RyRlJSbDVwWEF2QUlVTGRZcnlTOUpoS25qU3M3UGdZbUFQY2Z3RHdEL3JzTWV3UU1BQUE9PSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["1940"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["1945"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["1950"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["1955"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["1960"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["catagory"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"22.200","2":"44.500","3":"59.60","4":"73.2","5":"86.80","6":"Food and Tobacco","_rn_":"Food and Tobacco"},{"1":"10.500","2":"15.500","3":"29.00","4":"36.5","5":"46.20","6":"Household Operation","_rn_":"Household Operation"},{"1":"3.530","2":"5.760","3":"9.71","4":"14.0","5":"21.10","6":"Medical and Health","_rn_":"Medical and Health"},{"1":"1.040","2":"1.980","3":"2.45","4":"3.4","5":"5.40","6":"Personal Care","_rn_":"Personal Care"},{"1":"0.341","2":"0.974","3":"1.80","4":"2.6","5":"3.64","6":"Private Education","_rn_":"Private Education"}],"options":{"columns":{"min":{},"max":[10],"total":[6]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Check again</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>How much money was spent on Food and Tobacco in 1960?</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudXNfZXhwWzEsIDVdXG5gYGAifQ== -->
+<pre class="r"><code>us_exp[1, 5]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDg2LjhcbiJ9 -->
+<pre><code>[1] 86.8</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudXNfZXhwW1wiRm9vZCBhbmQgVG9iYWNjb1wiLCBcIjE5NjBcIl1cbmBgYCJ9 -->
+<pre class="r"><code>us_exp[&quot;Food and Tobacco&quot;, &quot;1960&quot;]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDg2LjhcbiJ9 -->
+<pre><code>[1] 86.8</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkludHJvZHVjdGlvbiB0byBEYXRhIFNjaWVuY2UgLSBIVyAzIg0KYXV0aG9yOiAiRmlyc3QgTmFtZSBMYXN0IG5hbWUgLSBgZmxhc3RuYW1lQGZsb3JpZGFwb2x5LmVkdWAiDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIFByb2JsZW0gMSAoMjAgUG9pbnRzKQ0KDQpDcmVhdGUgdGhlIGZvbGxvd2luZyB2ZWN0b3JzIGluIGBSYCAoc2VlIHRoZSBwYXR0ZXJuIGFuZCB1c2UgYXBwcm9wcmlhdGUgZnVuY3Rpb25zIHRvIGNvbnN0cnVjdCB0aGVzZSB2ZWN0b3JzKToNCg0KJGEgPSAoNSwgMTAsIDE1LCAyMCwgLi4uLCAxNjApJA0KDQokYiA9ICg4NywgODYsIDg1LCAuLi4sIDU2KSQNCg0KKGEpICg1IHBvaW50cykgTXVsdGlwbHkgdGhlc2UgdmVjdG9ycyBhbmQgY2FsbCB0aGUgcmVzdWx0IGBkYC4NCg0KYGBge3J9DQojIFNvbHV0aW9uIGZvciAxQToNCmEgPC0gc2VxKDUsIDE2MCwgNSkNCg0KYiA8LSBzZXEoODcsIDU2LCAtMSkNCg0KZCA8LSBhKmINCg0KcHJpbnQoZCkNCg0KYGBgDQoNCihiKSAoNSBwb2ludHMpIFdoYXQgYXJlIHRoZSAxOXRoLCAyMHRoLCBhbmQgMjFzdCBlbGVtZW50cyBvZiBgZGA/DQoNCmBgYHtyfQ0KIyBTb2x1dGlvbiBmb3IgMUI6DQooZClbYygxOSwgMjAsIDIxKV0NCg0KYGBgDQoNCihjKSAoNSBwb2ludHMpIFdoYXQgYXJlIGFsbCBvZiB0aGUgZWxlbWVudHMgb2YgYGRgIHdoaWNoIGFyZSBsZXNzIHRoYW4gMjAwMD8NCg0KYGBge3J9DQojIFNvbHV0aW9uIGZvciAxQzoNCg0KZFtkIDwgMjAwMF0NCiNob3cgdG8gcmVwbGFjZSBsb2dpY2FsIGFyZ3VtZW50cyB3aXRoIG51bWJlcnM/DQoNCiN1c2UgYm9vbGVhbiBvciBzb21ldGhpbmcgZWxzZT8gSG93IHRvIHByaW50IGQgPCAyMDAwPw0KDQoNCmBgYA0KDQooZCkgKDUgcG9pbnRzKSBIb3cgbWFueSBlbGVtZW50cyBvZiBgZGAgYXJlIGdyZWF0ZXIgdGhhbiA2MDAwPw0KDQpgYGB7cn0NCiMgU29sdXRpb24gZm9yIDFEOg0KI2QgaXMgdGhlIHZlY3RvciB0aGUgWyBdIGlzIGEgcGxhY2UgaW4gdGhlIHZlY3RvciANCg0KZFtkID4gNjAwMF0NCg0KDQojIGJpZ19udW0gPC0gZCA+IDYwMDANCiNsZW5ndGgoYmlnX251bSkNCg0KDQpgYGANCg0KIyBQcm9ibGVtIDIgKDIwIFBvaW50cykNCg0KU3RhcnQgd2l0aCB0aGlzIHZlY3RvciBvZiBgbm91bnNgLg0KDQpgYGB7cn0NCm5vdW5zIDwtIGMoImFwcGxlIiwgImZsb3dlciIsICJpbnNlY3QiLCAibGV0dHVjZSIsICJrbmlmZSIsICJkb2ciLCAiY2xvdWQiLCAicGVyc29uIiwgImNhYmluZXQiLCAiZmxvd2VyIiApDQpgYGANCg0KKGEpICg1IHBvaW50cykgVXNlIHRoZSBgbGVuZ3RoKClgIGZ1bmN0aW9uIHRvIGRpc3BsYXkgdGhlIG51bWJlciBvZiBlbGVtZW50cyBpbiBgbm91bnNgLg0KDQpgYGB7cn0NCiMgU29sdXRpb24gZm9yIDJBOg0KDQoNCmxlbmd0aChub3VucykNCg0KDQoNCmBgYA0KDQooYikgKDUgcG9pbnRzKSBVc2UgaW5kZXhpbmcgdG8gY3JlYXRlIGEgbmV3IHZlY3RvciBjb25zaXN0aW5nIG9mIHRoZSBmaXJzdCA0IGVsZW1lbnRzIG9mIGBub3Vuc2AuDQoNCmBgYHtyfQ0KIyBTb2x1dGlvbiBmb3IgMkI6DQoNCm5vdW5zIFsxOjRdDQoNCg0KYGBgDQoNCihjKSAoNSBwb2ludHMpIFVzZSBpbmRleGluZyB0byBjcmVhdGUgYSBuZXcgdmVjdG9yIGNvbnNpc3Rpbmcgb2Ygb25seSB0aGUgbGFzdCA4IGVsZW1lbnRzIG9mIGBub3Vuc2AuDQoNCmBgYHtyfQ0KIyBTb2x1dGlvbiBmb3IgMkM6DQpub3Vuc1szOjEwXQ0KDQpgYGANCg0KKGQpICg1IHBvaW50cykgVXNlIGluZGV4aW5nIHRvIGNyZWF0ZSBhIG5ldyB2ZWN0b3Igb2YgdGhlIDFzdCwgM3JkIHRocm91Z2ggNnRoLCBhbmQgMTB0aCBlbGVtZW50cyBvZiBgbm91bnNgICh0aGUgbGVuZ3RoIG9mIHRoZSByZXN1bHRpbmcgdmVjdG9yIHNob3VsZCBiZSA2KS4NCg0KYGBge3J9DQojIFNvbHV0aW9uIGZvciAyRDoNCg0KbGVuZ3RoKG5vdW5zW2MoMSwgMzo2LCAxMCldKQ0KDQpgYGANCg0KIyBQcm9ibGVtIDMgKDMwIFBvaW50cykNCg0KKGEpICg1IHBvaW50cykgQ3JlYXRlIGEgdmVjdG9yIGBteV9icmVha2Zhc3RgIG9mIGV2ZXJ5dGhpbmcgeW91IGF0ZSBmb3IgYnJlYWtmYXN0Lg0KDQpgYGB7cn0NCiMgU29sdXRpb24gZm9yIDNBOg0KDQpteV9icmVha2Zhc3QgPC0gYygicGFuY2FrZXMiLCAiY29mZmVlIikNCg0KDQpgYGANCg0KKGIpICg1IHBvaW50cykgQ3JlYXRlIGEgdmVjdG9yIGBteV9sdW5jaGAgb2YgZXZlcnl0aGluZyB5b3UgYXRlIChvciB3aWxsIGVhdCkgZm9yIGx1bmNoLg0KDQpgYGB7cn0NCiMgU29sdXRpb24gZm9yIDNCOg0KDQpteV9sdW5jaCA8LSBjKCJzYW5kd2hpY2giLCAicmVkYnVsbCIpDQoNCg0KYGBgDQoNCihjKSAoNSBwb2ludHMpIENyZWF0ZSBhIGxpc3QgYG1lYWxzYCB0aGF0IGNvbnRhaW5zIHlvdXIgYnJlYWtmYXN0IGFuZCBsdW5jaC4NCg0KYGBge3J9DQojIFNvbHV0aW9uIGZvciAzQzoNCg0KbWVhbHMgPC0gbGlzdChteV9icmVha2Zhc3QgPSBteV9icmVha2Zhc3QsIG15X2x1bmNoID0gbXlfbHVuY2gpDQptZWFscw0KDQpgYGANCg0KKGQpICg1IHBvaW50cykgQWRkIGEgImRpbm5lciIgZWxlbWVudCB0byB5b3VyIGBtZWFsc2AgbGlzdCB0aGF0IGhhcyB3aGF0IHlvdSBwbGFuIHRvIGVhdCBmb3IgZGlubmVyLg0KDQpgYGB7cn0NCiMgU29sdXRpb24gZm9yIDNEOg0KDQptZWFscyRkaW5uZXIgPC0gYygiY2hpY2tlbiIpDQptZWFscw0KDQpgYGANCg0KKGUpICg1IHBvaW50cykgVXNlIGRvbGxhciBub3RhdGlvbiB0byBleHRyYWN0IHlvdXIgYGRpbm5lcmAgZWxlbWVudCBmcm9tIHlvdXIgbGlzdCBhbmQgc2F2ZSBpdCBpbiBhIHZlY3RvciBjYWxsZWQgJ2Rpbm5lcicuDQoNCmBgYHtyfQ0KIyBTb2x1dGlvbiBmb3IgM0U6DQoNCiNbXSBmb3IgdmVjdG9yLCAkIGZvciBsaXN0DQoNCmRpbm5uZXIgPC0gbWVhbHMkZGlubmVyDQoNCg0KYGBgDQoNCihmKSAoNSBwb2ludHMpIFVzZSBkb3VibGUtYnJhY2tldCBub3RhdGlvbiB0byBleHRyYWN0IHlvdXIgYGx1bmNoYCBlbGVtZW50IGZyb20geW91ciBsaXN0IGFuZCBzYXZlIGl0IGluIHlvdXIgbGlzdCBhcyB0aGUgZWxlbWVudCBhdCBpbmRleCA1IChubyByZWFzb24gYmV5b25kIHByYWN0aWNlKS4NCg0KYGBge3J9DQojIFNvbHV0aW9uIGZvciAzRjoNCg0KbWVhbHNbWyJteV9sdW5jaCJdXQ0KDQptZWFsc1tbNV1dIDwtIG1lYWxzW1sibXlfbHVuY2giXV0NCg0KbWVhbHMNCg0KDQpgYGANCg0KIyBQcm9ibGVtIDQgKDMwIFBvaW50cykNCg0KKGEpICg1IHBvaW50cykgQ3JlYXRlIGEgdmVjdG9yIG9mIHRoZSBudW1iZXIgb2YgcG9pbnRzIHRoZSBDaGljYWdvIEJ1bGxzIChOQkEgdGVhbSkgc2NvcmVkIGluIHRoZSBtb3N0IHJlY2VudCA0IGdhbWVzIG9mIHRoZSBzZWFzb24gKEdvb2dsZSAiQ2hpY2FnbyBCdWxscyIgZm9yIHRoZSBzY29yZXMhKQ0KDQpgYGB7cn0NCiMgU29sdXRpb24gZm9yIDRBOg0KDQpidWxsc19wb2ludHMgPC0gYygzODksIDIwMCwgNTAsIDEwKQ0KDQpgYGANCg0KKGIpICg1IHBvaW50cykgQ3JlYXRlIGEgdmVjdG9yIG9mIHRoZSBudW1iZXIgb2YgcG9pbnRzIHRoZSBCdWxscyBoYXZlIGFsbG93ZWQgdG8gYmUgc2NvcmVkIGFnYWluc3QgdGhlbSBpbiBlYWNoIG9mIHRoZSBmaXJzdCA0IGdhbWVzIG9mIHRoZSBzZWFzb24uDQoNCmBgYHtyfQ0KIyBTb2x1dGlvbiBmb3IgNEI6DQoNCmFnYWluc3RfYnVsbHMgPC0gYygyMCwgOTksIDIsIDEpDQoNCg0KYGBgDQoNCihjKSAoNSBwb2ludHMpIENvbWJpbmUgeW91ciB0d28gdmVjdG9ycyBpbnRvIGEgZGF0YWZyYW1lIGNhbGxlZCBgZ2FtZXNgLg0KDQpgYGB7cn0NCiMgU29sdXRpb24gZm9yIDRDOg0KDQpnYW1lcyA8LSBkYXRhLmZyYW1lKGJ1bGxzX3BvaW50cywgYWdhaW5zdF9idWxscykNCg0KDQpgYGANCg0KKGQpICg1IHBvaW50cykgQ3JlYXRlIGEgbmV3IGNvbHVtbiAiZGlmZiIgdGhhdCBpcyB0aGUgZGlmZmVyZW5jZSBpbiBwb2ludHMgYmV0d2VlbiB0aGUgdGVhbXMuIEhpbnQ6IHJlY2FsbCB0aGUgc3ludGF4IGZvciBhc3NpZ25pbmcgbmV3IGVsZW1lbnRzICh3aGljaCBpbiB0aGlzIGNhc2Ugd2lsbCBiZSBhIHZlY3RvcikgdG8gYSBsaXN0IQ0KDQpgYGB7cn0NCiMgU29sdXRpb24gZm9yIDREOg0KDQpnYW1lc1tbImRpZmYiXV0gPC0gZ2FtZXMkYnVsbHNfcG9pbnRzIC0gZ2FtZXMkYWdhaW5zdF9idWxscw0KDQpgYGANCg0KKGUpICg1IHBvaW50cykgQ3JlYXRlIGEgbmV3IGNvbHVtbiAid29uIiB3aGljaCBpcyBgVFJVRWAgaWYgdGhlIEJ1bGxzIHdvbiB0aGUgZ2FtZS4NCg0KYGBge3J9DQojIFNvbHV0aW9uIGZvciA0RToNCg0KZ2FtZXMkd29uIDwtIGdhbWVzJGJ1bGxzX3BvaW50cyA+IGdhbWVzJGFnYWluc3RfYnVsbHMNCg0KYGBgDQoNCihmKSAoNSBwb2ludHMpIENyZWF0ZSBhIHZlY3RvciBvZiB0aGUgb3Bwb25lbnQgbmFtZXMgY29ycmVzcG9uZGluZyB0byB0aGUgZ2FtZXMgcGxheWVkIGFuZCBhZGQgaXQgdG8geW91ciBkYXRhZnJhbWUuDQoNCmBgYHtyfQ0KIyBTb2x1dGlvbiBmb3IgNEY6DQoNCm9wcG9uZW50cyA8LSBjKCJNaWFtaSBIZWF0IiwgIkxhIENsaXBwZXJzIiwgIkJvc3RvbiBDZWx0aWNzIiwgIk9LQyBUaHVuZGVyIikNCg0KZ2FtZXMkb3Bwb25lbnRzIDwtIG9wcG9uZW50cw0KDQpoZWFkKGdhbWVzKQ0KDQpgYGANCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIldvcmtpbmcgd2l0aCBEYXRhIEZyYW1lcyINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCiAgDQojIEV4ZXJjaXNlIDE6IGNyZWF0aW5nIGRhdGEgZnJhbWVzDQoNCg0KDQpDcmVhdGUgYSB2ZWN0b3Igb2YgdGhlIG51bWJlciBvZiBwb2ludHMgdGhlIE9ybGFuZG8gTWFnaWMgc2NvcmVkIGluIHRoZSBsYXN0IDQgSmFudWFyeSBnYW1lcyBvZiB0aGUgc2Vhc29uIChHb29nbGUgIk9ybGFuZG8gTWFnaWMiIGZvciB0aGUgc2NvcmVzISkNCg0KYGBge3J9DQojIGV4YW1wbGUgZnJvbSAyMDE5IC0gMjAgc2Vhc29uDQoNCnBvaW50cyA8LSBjKDkyLCA5NywgOTgsIDExNCkNCg0KYGBgDQoNCg0KDQpDcmVhdGUgYSB2ZWN0b3Igb2YgdGhlIG51bWJlciBvZiBwb2ludHMgdGhlIE9ybGFuZG8gTWFnaWMgaGF2ZSBhbGxvd2VkIHRvIGJlIHNjb3JlZCBhZ2FpbnN0IHRoZW0gaW4gZWFjaCBvZiB0aGUgbGFzdCA0IEphbnVhcnkgZ2FtZXMgb2YgdGhlIHNlYXNvbg0KDQpgYGB7cn0NCg0KcG9pbnRzX2FsbG93ZWQgPC0gYygxMTMsIDExMiwgMTA5LCAxMjApDQoNCmBgYA0KDQpDb21iaW5lIHlvdXIgdHdvIHZlY3RvcnMgaW50byBhIGRhdGEgZnJhbWUgY2FsbGVkIGBnYW1lc2ANCg0KYGBge3J9DQojIGh3IHByb2JsZW0NCmdhbWVzIDwtIGRhdGEuZnJhbWUocG9pbnRzLCBwb2ludHNfYWxsb3dlZCkNCg0KYGBgDQoNCmBgYHtyfQ0KDQojaGVhZCBsZXRzIHlvdSBzZWUgeW91ciBkYXRhDQpoZWFkKGdhbWVzKQ0KZGltKGdhbWVzKQ0KYGBgDQpgYGB7cn0NCg0KIyBwcmFjdGljZQ0KZ2FtZXMkcG9pbnRzDQpgYGANCg0KDQpDcmVhdGUgYSBuZXcgY29sdW1uIGBnYXBgIHRoYXQgaXMgdGhlIGRpZmZlcmVuY2UgaW4gcG9pbnRzIGJldHdlZW4gdGhlIHRlYW1zIChyZWNhbGwgdGhlIHN5bnRheCBmb3IgYXNzaWduaW5nIG5ldyBlbGVtZW50cyAod2hpY2ggaW4gdGhpcyBjYXNlIHdpbGwgYmUgYSB2ZWN0b3IpIHRvIGEgbGlzdCENCg0KDQpgYGB7cn0NCiMNCmdhbWVzW1siZ2FwIl1dIDwtIGdhbWVzJHBvaW50cyAtIGdhbWVzJHBvaW50c19hbGxvd2VkDQoNCmBgYA0KDQpDcmVhdGUgYSBuZXcgY29sdW1uICJ3b24iIHdoaWNoIGlzIFRSVUUgaWYgdGhlIE9ybGFuZG8gTWFnaWMgd29uIHRoZSBnYW1lDQoNCmBgYHtyfQ0KZ2FtZXMkd29uIDwtIGdhbWVzJHBvaW50cyA+IGdhbWVzJHBvaW50c19hbGxvd2VkDQpgYGANCg0KQ2hlY2sgdGhlIGN1cnJlbnQgZGF0YSBmcmFtZSBgZ2FtZXNgDQoNCmBgYHtyfQ0KZ2FtZXMNCmBgYA0KDQoNCkNyZWF0ZSBhIHZlY3RvciBvZiB0aGUgb3Bwb25lbnQgbmFtZXMgY29ycmVzcG9uZGluZyB0byB0aGUgZ2FtZXMgYWJvdmUNCg0KYGBge3J9DQpvcHBvbmVudHMgPC0gYygiTWlhbWkgSGVhdCIsICJMYSBDbGlwcGVycyIsICJCb3N0b24gQ2VsdGljcyIsICJPS0MgVGh1bmRlciIpDQpgYGANCg0KQWRkIGEgY29sdW1uIHRvIHRoZSBgZ2FtZXNgIGRhdGEgZnJhbWUgd2l0aCB0aGUgbmFtZXMgb2YgdGhlIG9wcG9uZW50cw0KDQpgYGB7cn0NCmdhbWVzJG9wcG9uZW50cyA8LSBvcHBvbmVudHMNCg0KYGBgDQoNCkNoZWNrIHRoZSBmaW5hbCB2ZXJzaW9uIG9mIHRoZSBkYXRhIGZyYW1lDQoNCmBgYHtyfQ0KZ2FtZXMNCmBgYA0KDQoNCiMgV29ya2luZyB3aXRoIGJ1aWx0LWluIGRhdGEgc2V0cw0KDQoNCkxvYWQgUidzIGBVU1BlcnNvbmFsRXhwZW5kaXR1cmVgIGRhdGFzZXQgdXNpbmcgdGhlIGBkYXRhKClgIGZ1bmN0aW9uLiANCg0KYGBge3J9DQpkYXRhKCdVU1BlcnNvbmFsRXhwZW5kaXR1cmUnKQ0KYGBgDQoNCmBgYHtyfQ0KVVNQZXJzb25hbEV4cGVuZGl0dXJlDQpgYGANCmBgYHtyfQ0KaXMuZGF0YS5mcmFtZShVU1BlcnNvbmFsRXhwZW5kaXR1cmUpDQoNCmNsYXNzKFVTUGVyc29uYWxFeHBlbmRpdHVyZSkNCmBgYA0KDQoNCkNoZWNrIHRoZSBvYmplY3QgdXNpbmcgdGhlIGBoZWFkKClgIGZ1bmN0aW9uDQoNCmBgYHtyfQ0KDQpgYGANCg0KSXMgdGhlIG9iamVjdCBgVVNQZXJzb25hbEV4cGVuZGl0dXJlYCBhIGRhdGEgZnJhbWU/IFVzZSBgaXMuZGF0YS5mcmFtZSgpYCB0byBjaGVjayANCg0KYGBge3J9DQoNCmBgYA0KDQpDcmVhdGUgYSBuZXcgb2JqZWN0IGNhbGxlZCBgdXNfZXhwYCB0aGF0IGlzIGEgZGF0YSBmcmFtZSB2ZXJzaW9uIG9mIHRoZSBgVVNQZXJzb25hbEV4cGVuZGl0dXJlYCBvYmplY3QNCg0KYGBge3J9DQoNCnVzX2V4cCA8LSBhcy5kYXRhLmZyYW1lKFVTUGVyc29uYWxFeHBlbmRpdHVyZSkNCg0KYGBgDQoNCkRvIHdlIGhhdmUgYSBkYXRhIGZyYW1lIG5vdz8NCg0KYGBge3J9DQppcy5kYXRhLmZyYW1lKHVzX2V4cCkNCg0KYGBgDQoNCldoYXQgYXJlIHRoZSBjb2x1bW4gbmFtZXM/DQoNCmBgYHtyfQ0KY29sbmFtZXModXNfZXhwKQ0KYGBgDQoNCk5vdGljZSBhbnl0aGluZz8gQXJlIHRoZXJlICJyb3cgbmFtZXMiIGZvciBgdXNfZXhwYD8NCg0KYGBge3J9DQpyb3duYW1lcyh1c19leHApDQpgYGANCg0KQWRkIGEgY29sdW1uIGBjYXRlZ29yeWAgdG8geW91ciBkYXRhIGZyYW1lIHRoYXQgY29udGFpbnMgdGhlIHJvdyBuYW1lcw0KDQpgYGB7cn0NCg0KdXNfZXhwJGNhdGFnb3J5IDwtIHJvdy5uYW1lcyh1c19leHApDQp1c19leHANCmBgYA0KDQpDaGVjayBhZ2Fpbg0KDQpgYGB7cn0NCg0KYGBgDQoNCkhvdyBtdWNoIG1vbmV5IHdhcyBzcGVudCBvbiBGb29kIGFuZCBUb2JhY2NvIGluIDE5NjA/DQoNCmBgYHtyfQ0KdXNfZXhwWzEsIDVdDQoNCnVzX2V4cFsiRm9vZCBhbmQgVG9iYWNjbyIsICIxOTYwIl0NCg0KYGBgDQoNCg==</div>
 
 
 
@@ -2203,7 +2077,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("cop_2073_HW_3_FA22.Rmd");
+  window.initializeSourceEmbed("CW_dataframes_practice.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>

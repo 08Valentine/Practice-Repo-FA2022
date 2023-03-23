@@ -1,0 +1,173 @@
+---
+title: "Working with Data Frames"
+output: html_notebook
+---
+
+  
+# Exercise 1: creating data frames
+
+
+
+Create a vector of the number of points the Orlando Magic scored in the last 4 January games of the season (Google "Orlando Magic" for the scores!)
+
+```{r}
+# example from 2019 - 20 season
+
+points <- c(92, 97, 98, 114)
+
+```
+
+
+
+Create a vector of the number of points the Orlando Magic have allowed to be scored against them in each of the last 4 January games of the season
+
+```{r}
+
+points_allowed <- c(113, 112, 109, 120)
+
+```
+
+Combine your two vectors into a data frame called `games`
+
+```{r}
+# hw problem
+games <- data.frame(points, points_allowed)
+
+```
+
+```{r}
+
+#head lets you see your data
+head(games)
+dim(games)
+```
+```{r}
+
+# practice
+games$points
+```
+
+
+Create a new column `gap` that is the difference in points between the teams (recall the syntax for assigning new elements (which in this case will be a vector) to a list!
+
+
+```{r}
+#
+games[["gap"]] <- games$points - games$points_allowed
+
+```
+
+Create a new column "won" which is TRUE if the Orlando Magic won the game
+
+```{r}
+games$won <- games$points > games$points_allowed
+```
+
+Check the current data frame `games`
+
+```{r}
+games
+```
+
+
+Create a vector of the opponent names corresponding to the games above
+
+```{r}
+opponents <- c("Miami Heat", "La Clippers", "Boston Celtics", "OKC Thunder")
+```
+
+Add a column to the `games` data frame with the names of the opponents
+
+```{r}
+games$opponents <- opponents
+
+```
+
+Check the final version of the data frame
+
+```{r}
+games
+```
+
+
+# Working with built-in data sets
+
+
+Load R's `USPersonalExpenditure` dataset using the `data()` function. 
+
+```{r}
+data('USPersonalExpenditure')
+```
+
+```{r}
+USPersonalExpenditure
+```
+```{r}
+is.data.frame(USPersonalExpenditure)
+
+class(USPersonalExpenditure)
+```
+
+
+Check the object using the `head()` function
+
+```{r}
+
+```
+
+Is the object `USPersonalExpenditure` a data frame? Use `is.data.frame()` to check 
+
+```{r}
+
+```
+
+Create a new object called `us_exp` that is a data frame version of the `USPersonalExpenditure` object
+
+```{r}
+
+us_exp <- as.data.frame(USPersonalExpenditure)
+
+```
+
+Do we have a data frame now?
+
+```{r}
+is.data.frame(us_exp)
+
+```
+
+What are the column names?
+
+```{r}
+colnames(us_exp)
+```
+
+Notice anything? Are there "row names" for `us_exp`?
+
+```{r}
+rownames(us_exp)
+```
+
+Add a column `category` to your data frame that contains the row names
+
+```{r}
+
+us_exp$catagory <- row.names(us_exp)
+us_exp
+```
+
+Check again
+
+```{r}
+
+```
+
+How much money was spent on Food and Tobacco in 1960?
+
+```{r}
+us_exp[1, 5]
+
+us_exp["Food and Tobacco", "1960"]
+
+```
+

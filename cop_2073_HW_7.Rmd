@@ -1,0 +1,30 @@
+---
+title: "Introduction to Data Science - Homework"
+author: "First Name Last name - `flastname@floridapoly.edu`"
+output: html_notebook
+---
+
+
+> The purpose of this assignment is to practice some of the skills you have gained in the course for exploring data and generating a data analysis. You should submit a short summary of the results of your exploratory data analysis (EDA), on the dataset selected in the previous assignment. 
+
+Below are some guidelines to take into account while completing this assignment.
+
+_Generating ideas is the first step_, and this is what you completed in the previous assignment. 
+
+Try to generate a short summary report that includes:
+
+- **Introduction**. This section should introduce your general research topic and your data (where it came from, how it was collected, what are the cases, what are the variables, etc.).
+
+- **Data Description**. You could show a "snapshot" of the dataframe (or the portion of it) that you are using. To make your report reproducible, make sure to include a copy of the data with your submission, or directions on how to access the data (for example, the GitHub link to the dataset).
+
+- **Exploratory Data Analysis**. The exploratory data analysis could include:
+
+  * Uni-variate summary statistics and data visualizations.
+  * Bi-variate and/or multivariate data visualizations and summary statistics if applicable.
+  * Summaries, comparisons, and any other type of quantitative analysis.
+  * Narrative about what you observe in the exploratory data analysis and what you learn about the data from the exploratory data analysis.
+
+- **Commentary on your initial research questions**. A summary of what you have learned about your research questions. You can provide suggestions for improving your analysis, and include a paragraph on what you would do differently if you were able to start over with this exercise or what you would do next if you were going to continue working on this dataset (or similar ones).
+
+
+There is no limit on what tools or packages you may use, but sticking to packages we learned in class (those from the `tidyverse`) is sufficient.

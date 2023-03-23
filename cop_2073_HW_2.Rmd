@@ -97,7 +97,7 @@ exp(pi) < pi^exp(1)
 numbers <- c(31:86)
 length(numbers)
 print(numbers)
-
+numbers
 ```
 
 (e) Use the `seq()` function to produce a range of number from -5 to 10 in 0.5 increments.
